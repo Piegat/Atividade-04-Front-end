@@ -9,12 +9,13 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FormControl, FormControlName, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IndexComponent } from './layout/index/index.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarroslistComponent } from './carros/carroslist/carroslist.component';
-import { PessoaslistComponent } from './pessoas/pessoaslist/pessoaslist.component';
-import { LivroslistComponent } from './livros/livroslist/livroslist.component';
-import { CarrodetailsComponent } from './carros/carrodetails/carrodetails.component';
-import { LivrodetailsComponent } from './livros/livrodetails/livrodetails.component';
-import { PessoadetailsComponent } from './pessoas/pessoadetails/pessoadetails.component';
+import { CarroslistComponent } from './components/carros/carroslist/carroslist.component';
+import { PessoaslistComponent } from './components/pessoas/pessoaslist/pessoaslist.component';
+import { LivroslistComponent } from './components/livros/livroslist/livroslist.component';
+import { CarrodetailsComponent } from './components/carros/carrodetails/carrodetails.component';
+import { LivrodetailsComponent } from './components/livros/livrodetails/livrodetails.component';
+import { PessoadetailsComponent } from './components/pessoas/pessoadetails/pessoadetails.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -36,7 +37,9 @@ import { PessoadetailsComponent } from './pessoas/pessoadetails/pessoadetails.co
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

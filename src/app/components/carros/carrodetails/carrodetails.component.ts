@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Carro } from '../carro';
+import { Carro } from '../../../models/carros/carro';
 import { CarroslistComponent } from '../carroslist/carroslist.component';
 
 @Component({

@@ -1,16 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { Livro } from '../livro';
+import { Carro } from '../../../models/carros/carro';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-livroslist',
-  templateUrl: './livroslist.component.html',
-  styleUrls: ['./livroslist.component.scss']
+  selector: 'app-carroslist',
+  templateUrl: './carroslist.component.html',
+  styleUrls: ['./carroslist.component.scss']
 })
-export class LivroslistComponent {
+export class CarroslistComponent {
 
 
-  lista: Livro[] = [];
+  lista: Carro[] = [];
 
   modalService = inject(NgbModal)
 
@@ -22,8 +22,8 @@ export class LivroslistComponent {
   }
 
 
-  addList(livro: Livro){
-    this.lista.push(livro)
+  addList(carro: Carro){
+    this.lista.push(carro)
     this.close()
 
   }
@@ -32,4 +32,3 @@ export class LivroslistComponent {
     this.modalService.dismissAll();
   }
 }
-

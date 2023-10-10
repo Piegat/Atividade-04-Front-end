@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
-import { Pessoas } from '../pessoas';
+import { Pessoas } from '../../../models/pessoas/pessoas';
 import { PessoaslistComponent } from '../pessoaslist/pessoaslist.component';
 import { ActivatedRoute } from '@angular/router';
 
