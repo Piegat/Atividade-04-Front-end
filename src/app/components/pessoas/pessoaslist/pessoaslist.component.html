@@ -6,14 +6,19 @@
     <table class="table table-primary table-striped  table-sm w-50 table-bordered border-light">
    <thead class="text-white">
     <tr>
+        <th>id</th>
         <th>Nome</th>
         <th>Idade</th>  
+        <th>Ação</th>
     </tr>
       </thead>
     <tbody>
         <tr *ngFor="let pessoa of lista; let i = index">
+          <td class="table-active">            {{pessoa.id}}            </td>
             <td class="table-active">            {{pessoa.nome}}            </td>
             <td class="table-active">            {{pessoa.idade}}            </td>
+            <td> <button class="btn btn-primary" (click)="editar(modal, pessoa, i)">Editar</button> </td>
+
         </tr>
     </tbody>
     
@@ -40,7 +45,7 @@
     </div>
     <div class="modal-body mt-1">
     
-      <app-pessoadetails (retorno)="addList($event)"></app-pessoadetails>
+      <app-pessoadetails [pessoa]="pessoaSelecionadaParaEdicao" (retorno)="addOuEditarPessoa($event)"></app-pessoadetails>
     
     </div>
     <div class="modal-footer">

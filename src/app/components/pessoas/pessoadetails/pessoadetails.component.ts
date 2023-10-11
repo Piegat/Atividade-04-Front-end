@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Pessoas } from '../../../models/pessoas/pessoas';
 import { PessoaslistComponent } from '../pessoaslist/pessoaslist.component';
 import { ActivatedRoute } from '@angular/router';
+import { PessoasService } from 'src/app/service/pessoas/pessoas.service';
 
 @Component({
   selector: 'app-pessoadetails',
@@ -11,12 +12,10 @@ import { ActivatedRoute } from '@angular/router';
 export class PessoadetailsComponent {
 
     
-  route = inject(ActivatedRoute);
-  pessoa: Pessoas = new Pessoas();
-
+  @Input() pessoa: Pessoas = new Pessoas();
   @Output() retorno = new EventEmitter<Pessoas>();
 
-  pessoaList = inject(PessoaslistComponent)
+  pessoaService = inject(PessoasService);
 
 
   constructor(){
@@ -25,7 +24,24 @@ export class PessoadetailsComponent {
   }
 
   salvar(){
-    this.retorno.emit(this.pessoa)
+
+    this.pessoaService.save(this.pessoa).subscribe({
+      next: pessoa => { // QUANDO DÁ CERTO
+        this.retorno.emit(pessoa);
+        
+      },
+      error: erro => { // QUANDO DÁ ERRO
+        alert('Exemplo de tratamento de erro! Observe o erro no console!');
+        console.error(erro);
+      }
+    });  
+  
+  }
+
+  ngOnInit(): void{
+
+    this.pessoa = Object.assign({}, this.pessoa);
+
   }
 
   

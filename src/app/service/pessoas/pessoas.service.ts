@@ -8,7 +8,7 @@ import { Pessoas } from 'src/app/models/pessoas/pessoas';
 })
 export class PessoasService {
 
-  API: string = 'http://localhost:4200/api/pessoa'
+  API: string = 'http://localhost:8080/api/pessoa'
   http = inject(HttpClient)
 
 
@@ -17,7 +17,7 @@ export class PessoasService {
 
   listAll(): Observable<Pessoas[]>{
 
-    return this.http.get<Pessoas[]>(this.API+"getAll");
+    return this.http.get<Pessoas[]>(this.API+"/getAll");
   }
 
   getById(id: number): Observable<Pessoas>{
@@ -27,7 +27,7 @@ export class PessoasService {
 
     return this.http.get<Pessoas>(this.API, {params: params})
   }
-  
+
 
   save(pessoa: Pessoas): Observable<Pessoas> {
     return this.http.post<Pessoas>(this.API, pessoa);
