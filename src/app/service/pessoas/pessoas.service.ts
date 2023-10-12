@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Pessoas } from 'src/app/models/pessoas/pessoas';
@@ -31,6 +31,16 @@ export class PessoasService {
 
   save(pessoa: Pessoas): Observable<Pessoas> {
     return this.http.post<Pessoas>(this.API, pessoa);
+  }
+
+  edit(pessoa: Pessoas): Observable<Pessoas>{
+
+    return this.http.put<Pessoas>(this.API, pessoa);
+  }
+
+  delete(id: number): Observable<HttpStatusCode>{
+    console.log(id)
+    return this.http.delete<HttpStatusCode>(this.API + '/' + id );
   }
 
 }

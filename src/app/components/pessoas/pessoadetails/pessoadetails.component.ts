@@ -25,6 +25,7 @@ export class PessoadetailsComponent {
 
   salvar(){
 
+    if(this.pessoa.id != 0){
     this.pessoaService.save(this.pessoa).subscribe({
       next: pessoa => { // QUANDO DÁ CERTO
         this.retorno.emit(pessoa);
@@ -36,7 +37,17 @@ export class PessoadetailsComponent {
       }
     });  
   
-  }
+  }else{    this.pessoaService.save(this.pessoa).subscribe({
+    next: pessoa => { // QUANDO DÁ CERTO
+      this.retorno.emit(pessoa);
+      
+    },
+    error: erro => { // QUANDO DÁ ERRO
+      alert('Exemplo de tratamento de erro! Observe o erro no console!');
+      console.error(erro);
+    }
+  }); 
+}}
 
   ngOnInit(): void{
 

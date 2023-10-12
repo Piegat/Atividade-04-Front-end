@@ -18,7 +18,7 @@ export class PessoaslistComponent {
 
 
   pessoaSelecionadaParaEdicao: Pessoas = new Pessoas();
-  indiceSelecionadoParaEdicao!: number;
+  idSelecionadoParaEdicao!: number;
 
   constructor(){
 
@@ -53,12 +53,19 @@ export class PessoaslistComponent {
   }
 
 
-  editar(modal: any, pessoa: Pessoas, indice: number) {
+  editar(modal: any, pessoa: Pessoas, id: number) {
     this.pessoaSelecionadaParaEdicao = Object.assign({}, pessoa);
     
-    this.indiceSelecionadoParaEdicao = indice;
+    this.idSelecionadoParaEdicao = id;
   
     this.modalService.open(modal, { size: 'sm' });
+  }
+
+  deletar(id: number){
+
+    this.lista = this.lista.filter(item => item.id !== id);
+    this.pessoaService.delete(id).subscribe();
+
   }
 
 
@@ -68,15 +75,7 @@ export class PessoaslistComponent {
 
     this.listAll();
 
-    if (this.pessoaSelecionadaParaEdicao.id > 0) { //MODO EDITAR
-      this.lista[this.indiceSelecionadoParaEdicao] = pessoa;
-    }else{
-      this.lista.push(pessoa);
-    }
-
     this.modalService.dismissAll();
-
-
   }
   
 
